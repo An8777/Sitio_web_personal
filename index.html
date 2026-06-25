@@ -17,6 +17,33 @@
     <!-- Boxicons -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QRRWWFB67Y"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-QRRWWFB67Y');
+    </script>
+
+    <!-- Firebase: contador de visitantes en tiempo real -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { getDatabase, ref, push, onDisconnect, remove } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+        const firebaseConfig = {
+            databaseURL: "https://portafolio-anderson-default-rtdb.firebaseio.com/"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db  = getDatabase(app);
+
+        // Registra esta visita
+        const visitRef = push(ref(db, "visitors"));
+        // Al cerrar/salir la pestaña, se borra automáticamente
+        onDisconnect(visitRef).remove();
+    </script>
+
     <!-- Estilos -->
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -67,7 +94,7 @@
                     <img src="img/foto1.jpg" alt="Anderson Medina — Foto de perfil" class="hero-img">
                     <div class="hero-badge-float tech">
                         <i class='bx bx-chip'></i>
-                        <span>4 años en Soporte Técnico</span>
+                        <span>3 años en Soporte Técnico</span>
                     </div>
                     <div class="hero-badge-float media">
                         <i class='bx bx-microphone'></i>
@@ -94,7 +121,8 @@
                         y la <strong>energía comunicativa de los medios deportivos</strong>.
                     </p>
                     <p>
-                        Con 4 años de experiencia activa en soporte técnico — bases de datos y desarrollo en Python y C# — y una formación en locución en ASDER 
+                        Con 3 años de experiencia activa en soporte técnico — mantenimiento de hardware, 
+                        bases de datos y desarrollo en Python y C# — y una formación en locución en ASDER 
                         enfocada en radio, televisión deportiva, ofrezco una combinación de 
                         habilidades que muy pocos perfiles reúnen.
                     </p>
@@ -292,9 +320,9 @@
                 <div class="edu-card">
                     <div class="edu-icon"><i class='bx bx-buildings'></i></div>
                     <div class="edu-body">
-                        <span class="edu-year">2025 – Presente</span>
+                        <span class="edu-year">2024 – Presente</span>
                         <h4>Ingeniería en Sistemas y Computación</h4>
-                        <p>Universidad Dr. Andrés Bello — 4.º Ciclo</p>
+                        <p>Universidad Dr. Andrés Bello — 3er Ciclo</p>
                     </div>
                 </div>
                 <div class="edu-card">
